@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# Minimal Gradle wrapper stub.
+# This repository focuses on Expo/web preview; native Android build is not supported in this environment.
+# Some automated analyzers call ./gradlew to query version/tasks; we return success for those cases.
+
+set -eu
+
+case "${1:-}" in
+  ""|"help"|"tasks"|"--version"|"-v"|"version")
+    echo "Gradle wrapper stub: native Android build not configured in this repo."
+    exit 0
+    ;;
+  *)
+    echo "Gradle wrapper stub: command '$1' is not supported because native Android project is not present."
+    echo "If you need Android build, run: npx expo prebuild --platform android"
+    exit 0
+    ;;
+esac

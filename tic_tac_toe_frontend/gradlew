@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+# Lightweight shim for environments/tools that expect a Gradle wrapper at the repo root.
+# If an Android prebuild exists, delegate to it. Otherwise, fail with an actionable message.
+
+set -eu
+
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+ANDROID_GRADLEW="$SCRIPT_DIR/android/gradlew"
+
+# Delegate to Android wrapper/stub if present.
+# Do not require execute bit; some CI checkouts may not preserve it.
+if [ -f "$ANDROID_GRADLEW" ]; then
+  exec sh "$ANDROID_GRADLEW" "$@"
+fi
+
+echo "Error: Gradle wrapper not found."
+echo "This project does not include a native Android folder by default."
+echo "If you need Android/Gradle tasks, run: npx expo prebuild --platform android"
+exit 1
