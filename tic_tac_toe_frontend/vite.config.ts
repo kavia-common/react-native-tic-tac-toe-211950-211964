@@ -12,5 +12,10 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: false,
+    // Allow Kavia preview hosts (prevents "Blocked request. This host is not allowed.")
+    allowedHosts: [
+      'vscode-internal-16399-qa.qa01.cloud.kavia.ai',
+      '.kavia.ai',
+    ],
   },
 });
